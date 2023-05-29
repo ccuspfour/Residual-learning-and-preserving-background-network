@@ -77,7 +77,7 @@ def get_the_end_model(input_channel_num=3, feature_dim=64, resunit_num=16):
         return a
 
     def residual_net(inputs):
-        def block(inputs):
+        def residual_block(inputs):
         #residual block
             for i in range(4):
              b = Conv2D(32, (3, 3), padding="same", kernel_initializer="he_normal")(inputs)
@@ -95,14 +95,15 @@ def get_the_end_model(input_channel_num=3, feature_dim=64, resunit_num=16):
         b = Conv2D(32, (3, 3), padding="same", kernel_initializer="he_normal")(b)
         return b
 
-    inputs = Input(shape=(None, None, 32))
+    inputs = Input(shape=(None, None, input_channel_num), name='Rain_image')
     Residual = residual_net(inputs)
 
     out1 = Subtract()([inputs,Residual])
     out2 = background(inputs)
     end = Add()([out1, out2])
-
-    return end
+    model = Model(inputs=inputs, outputs=[out1,out2,end])
+    return model
+ 
 
 def main():
     # model = get_model()

@@ -33,13 +33,13 @@ class Schedule:
 def get_args():
     parser = argparse.ArgumentParser(description="train derain model",
                                      formatter_class=argparse.ArgumentDefaultsHelpFormatter)
-    parser.add_argument("--image_dir_noise", type=str, default='./dataset/Rain_H/train/x_in',
+    parser.add_argument("--image_dir_noise", type=str, default='M:/lin/image/200l8001200/rain',
                         help="train image dir")
-    parser.add_argument("--image_dir_original", type=str, default='./dataset/Rain_H/train/y_out',
+    parser.add_argument("--image_dir_original", type=str, default='M:/lin/image/200l8001200/rain',
                         help="train image dir")
-    parser.add_argument("--test_dir_noise", type=str, default='./dataset/Rain100H/rain',
+    parser.add_argument("--test_dir_noise", type=str, default='M:/lin/image/rain12/rainy',
                         help="test image dir")
-    parser.add_argument("--test_dir_original", type=str, default='./dataset/Rain100H/norain',
+    parser.add_argument("--test_dir_original", type=str, default='M:/lin/image/rain12/groundtruth',
                         help="test image dir")
     parser.add_argument("--If_n", type=bool, default=True,
                         help="If normalizing the image")
@@ -55,7 +55,7 @@ def get_args():
                         help="steps per epoch")
     parser.add_argument("--loss", type=str, default="mse",
                         help="loss; mse', 'mae', or 'l0' is expected")
-    parser.add_argument("--output_path", type=str, default="impulse_clean",
+    parser.add_argument("--output_path", type=str, default="M:/aiweight",
                         help="checkpoint dir")
     parser.add_argument("--model", type=str, default="the_end",
                         help="model architecture ('Similarity')")
